@@ -1,46 +1,8 @@
-# =====================
-# Windows Instructions:
-# =====================
-#
-# 1. Install Docker Desktop for Windows (with WSL2 backend recommended).
-# 2. Install and run an X server (e.g., VcXsrv or Xming) on Windows before starting the container.
-#    - When launching VcXsrv, enable 'Disable access control' for easier setup (or configure access as needed).
-# 3. Set the DISPLAY environment variable to your Windows host IP and display number (e.g., 'host.docker.internal:0.0').
-#    - You can set this in the provided .env file in the same directory as this docker-compose.yml:
-#        DISPLAY=host.docker.internal:0.0
-#        UID=1000
-#        GID=1000
-#    - Adjust UID/GID as needed (or remove the 'user' line if not needed on Windows).
-# 4. If not using WSL2, adjust the volume paths to use Windows syntax (e.g., 'C:/path/to/ros_ws:/root/ros_ws').
-# 5. Start the container with 'docker compose up'.
-# 6. Run GUI tools (RViz, Gazebo) inside the container; they should appear on your Windows desktop.
-#
-# Note: The 'xhost' command is not needed on Windows. Ensure your X server allows connections from Docker.
-#
-# For more details, see:
-#   - Docker Desktop WSL2: https://docs.docker.com/desktop/windows/wsl/
-#   - VcXsrv: https://sourceforge.net/projects/vcxsrv/
-#   - Xming: https://sourceforge.net/projects/xming/
-#
-# =====================
-# Linux Instructions:
-# =====================
-#
-# 1. Run `xhost +local:docker` on your host to allow Docker containers to use your X server (for GUI apps).
-# 2. Set the DISPLAY, UID, and GID variables in the provided .env file (see .env for examples).
-# 3. Start the container with `docker compose up`.
-# 4. Inside the container, you can run GUI tools like RViz or Gazebo and see them on your host.
-#
-# For more info, see: https://hub.docker.com/_/ros/
-#
-# =====================
-# .env file usage:
-# =====================
-#
-# - This project includes a sample .env file. Copy or edit it as needed.
-# - The .env file should be in the same directory as docker-compose.yml.
-# - Set DISPLAY, UID, and GID for your OS as described above.
-# - docker-compose will automatically use these variables.
+# This Docker Compose file sets up a ROS Jazzy container with GUI support
+# It allows you to run ROS GUI applications like RViz or Gazebo on your host machine.
+# Make sure to have Docker and Docker Compose installed on your system.
+
+# Please refer to the README for usage instructions and prerequisites.
 
 version: '3.8'
 services:
