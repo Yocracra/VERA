@@ -22,6 +22,8 @@ services:
       - ./ros_ws:/root/ros_ws
     # Use the host's network stack (needed for X11 forwarding)
     network_mode: host
+    # Install Gazebo Harmonic (LTS) for ROS Jazzy on container startup
+    entrypoint: ["/bin/bash", "-c", "apt-get update && apt-get install -y gazebo-harmonic ros-jazzy-gz-* && exec bash"]
     # Start a bash shell by default (you can change this to run a specific command)
     command: bash
     # Run as the current user for correct file permissions (set UID/GID in your .env file)
