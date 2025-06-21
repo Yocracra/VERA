@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project uses Docker Compose to provide a consistent ROS (Robot Operating System) development environment with GUI support for both Linux and Windows users. Environment variables are managed via a `.env` file, which is unique to each developer and not committed to the repository.
+This project uses Docker Compose and a custom Dockerfile to provide a consistent ROS Jazzy + Gazebo Harmonic development environment with GUI support for both Linux and Windows users. All dependencies and common dev tools are pre-installed in the image for fast, reproducible setup. Environment variables are managed via a `.env` file, which is unique to each developer and not committed to the repository.
 
 ---
 
@@ -14,7 +14,11 @@ This project uses Docker Compose to provide a consistent ROS (Robot Operating Sy
    ```
 2. **Edit `.env` for Your OS**
    - See the platform-specific instructions below.
-3. **Start the Docker Environment**
+3. **Build the Docker Image**
+   ```bash
+   docker compose build
+   ```
+4. **Start the Docker Environment**
    ```bash
    docker compose up
    ```
@@ -33,7 +37,7 @@ This project uses Docker Compose to provide a consistent ROS (Robot Operating Sy
    GID=1000
    ```
    Adjust as needed for your system.
-3. Start the container with `docker compose up`.
+3. Build and start the container as above.
 4. Run GUI tools (e.g., RViz, Gazebo) inside the container; they will display on your host.
 
 - More info: https://hub.docker.com/_/ros/
@@ -51,7 +55,7 @@ This project uses Docker Compose to provide a consistent ROS (Robot Operating Sy
    ```
    Adjust UID/GID as needed (or remove the `user` line if not needed on Windows).
 4. If not using WSL2, adjust volume paths to use Windows syntax (e.g., `C:/path/to/ros_ws:/root/ros_ws`).
-5. Start the container with `docker compose up`.
+5. Build and start the container as above.
 6. Run GUI tools (RViz, Gazebo) inside the container; they should appear on your Windows desktop.
 
 > **Note:** The `xhost` command is not needed on Windows. Ensure your X server allows connections from Docker.

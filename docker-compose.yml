@@ -1,5 +1,5 @@
-# This Docker Compose file sets up a ROS Jazzy container with GUI support
-# It allows you to run ROS GUI applications like RViz or Gazebo on your host machine.
+# This Docker Compose file sets up a ROS Jazzy + Gazebo Harmonic container with GUI support
+# The image is built from the included Dockerfile for a reproducible, ready-to-use dev environment.
 # Make sure to have Docker and Docker Compose installed on your system.
 
 # Please refer to the README for usage instructions and prerequisites.
@@ -7,8 +7,9 @@
 version: '3.8'
 services:
   ros:
-    # Use the official ROS Jazzy image from Docker Hub
-    image: ros:jazzy
+    # Build from the local Dockerfile (includes ROS Jazzy, Gazebo Harmonic, dev tools)
+    build: .
+    image: vera-ros-jazzy-gazebo:latest
     container_name: ros_jazzy_gui
     environment:
       # Pass the host's DISPLAY variable so GUI apps know where to render
@@ -22,9 +23,6 @@ services:
       - ./ros_ws:/root/ros_ws
     # Use the host's network stack (needed for X11 forwarding)
     network_mode: host
-    # Install Gazebo Harmonic (LTS) for ROS Jazzy on container startup
-    entrypoint: ["/bin/bash", "-c", "apt-get update && apt-get install -y gazebo-harmonic ros-jazzy-gz-* && exec bash"]
-    # Start a bash shell by default (you can change this to run a specific command)
     command: bash
     # Run as the current user for correct file permissions (set UID/GID in your .env file)
     user: "${UID}:${GID}"
