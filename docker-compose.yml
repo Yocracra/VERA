@@ -24,6 +24,6 @@ services:
     network_mode: host
     command: bash
     # Run as the current user for correct file permissions (set UID/GID in your .env file)
-    user: "${UID}:${GID}"
+    #user: "${UID}:${GID}" 
     tty: true  # Keep the container open for interactive use
     stdin_open: true  # Allow interactive commands

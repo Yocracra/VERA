@@ -57,10 +57,10 @@ You can also use `xclock` or any other simple X11 app for testing.
 2. In your `.env` file, set:
    ```
    DISPLAY=:0
-   UID=1000
-   GID=1000
+   # UID=1000
+   # GID=1000
    ```
-   Adjust as needed for your system.
+   Adjust as needed for your system. UID and GID are optional and only needed if you uncomment the `user:` line in `docker-compose.yml`.
 3. Build and start the container as above.
 4. Run GUI tools (e.g., RViz, Gazebo) inside the container; they will display on your host.
 
@@ -74,10 +74,10 @@ You can also use `xclock` or any other simple X11 app for testing.
 3. In your `.env` file, set:
    ```
    DISPLAY=host.docker.internal:0.0
-   UID=1000
-   GID=1000
+   # UID=1000
+   # GID=1000
    ```
-   Adjust UID/GID as needed (or remove the `user` line if not needed on Windows).
+   Adjust as needed. UID and GID are optional and only needed if you uncomment the `user:` line in `docker-compose.yml`.
 4. If not using WSL2, adjust volume paths to use Windows syntax (e.g., `C:/path/to/ros_ws:/root/ros_ws`).
 5. Build and start the container as above.
 6. Run GUI tools (RViz, Gazebo) inside the container; they should appear on your Windows desktop.
