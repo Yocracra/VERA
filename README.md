@@ -8,6 +8,8 @@ This project uses Docker Compose and a custom Dockerfile to provide a consistent
 
 ## Quick Start
 
+For your first time running, go through [Platform-Specific Setup](#Platform-Specific Setup) first.
+
 1. **Copy the Example Environment File**
    ```bash
    cp .env.example .env
@@ -25,11 +27,33 @@ This project uses Docker Compose and a custom Dockerfile to provide a consistent
 
 ---
 
+## Testing X11 Forwarding (Linux)
+
+To verify that your X11 forwarding is working, you can run a simple X11 application inside the container:
+
+1. Start your container as usual:
+   ```bash
+   docker compose up
+   ```
+2. In the container shell, install x11-apps (if not already installed):
+   ```bash
+   apt-get update && apt-get install -y x11-apps
+   ```
+3. Run a test X11 app:
+   ```bash
+   xeyes
+   ```
+   If a window with moving eyes appears on your host, X11 forwarding is working!
+
+You can also use `xclock` or any other simple X11 app for testing.
+
+---
+
 ## Platform-Specific Setup
 
 ### Linux
 
-1. Run `xhost +local:docker` on your host to allow Docker containers to use your X server (for GUI apps).
+1. Run `xhost +local:docker` on your host to allow Docker containers to use your X server (for GUI apps). You may also need to add `/tmp/.X11-unix` to the "File Sharing" list in Docker Desktop settings.
 2. In your `.env` file, set:
    ```
    DISPLAY=:0

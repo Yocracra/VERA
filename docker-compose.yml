@@ -4,7 +4,6 @@
 
 # Please refer to the README for usage instructions and prerequisites.
 
-version: '3.8'
 services:
   ros:
     # Build from the local Dockerfile (includes ROS Jazzy, Gazebo Harmonic, dev tools)
